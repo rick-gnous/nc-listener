@@ -10,6 +10,7 @@ spawn /bin/bash
 if [ $arg1 -lt 1024] || [ $UID -ne 0 ]; then
     echo "Be sudo morron."
     exit 100
+
 fi
 
 send "nc -lvp $arg1\n"
