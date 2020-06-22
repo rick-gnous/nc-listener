@@ -7,11 +7,9 @@ set timeout -1
 
 spawn /bin/bash
 
-if [ $arg1 -lt 1024]; then
-    if [ $UID -ne 0 ]; then
-        echo "Be sudo morron."
-        exit 100
-    fi
+if [$1 -le 1024] && [$UID -ne 0]; then
+        echo "You must be sudo to use ports < 1024"
+        exit 0
 fi
 
 send "nc -lvp $arg1\n"
